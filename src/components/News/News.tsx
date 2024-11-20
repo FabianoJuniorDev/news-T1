@@ -38,7 +38,7 @@ const News = ({ searchTerm, triggerSearch, setTriggerSearch }: NewsProps) => {
 
   useEffect(() => {
     if (triggerSearch) {
-      // Adicionando o setTimeout de 2 segundos
+      setIsLoading(true);
       setTimeout(() => {
         if (searchTerm.trim() === "") {
           setFilteredNews(news);
@@ -50,8 +50,9 @@ const News = ({ searchTerm, triggerSearch, setTriggerSearch }: NewsProps) => {
           );
           setFilteredNews(filtered);
         }
+        setIsLoading(false);
         setTriggerSearch(false);
-      }, 1000); // 2 segundos
+      }, 1000);
     }
   }, [triggerSearch, searchTerm, news, setTriggerSearch]);
 

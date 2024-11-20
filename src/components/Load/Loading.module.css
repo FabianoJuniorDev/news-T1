@@ -5,14 +5,9 @@
   right: 0;
   bottom: 0;
   display: flex;
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.5
-  ); /* (Opcional) Adiciona um fundo semitransparente */
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .spinner {
