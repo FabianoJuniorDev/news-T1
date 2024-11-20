@@ -22,24 +22,23 @@ const News = ({ searchTerm, triggerSearch, setTriggerSearch }: NewsProps) => {
   const [filteredNews, setFilteredNews] = useState<NewsItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Simulando um loading mais lento
+  // Carregar as notícias com um delay simulado (para fins de loading)
   useEffect(() => {
     setIsLoading(true);
-    setTimeout(() => {
-      fetch("https://servicodados.ibge.gov.br/api/v3/noticias/")
-        .then((res) => res.json())
-        .then((items: { items: NewsItem[] }) => {
-          setNews(items.items);
-          setFilteredNews(items.items);
-        })
-        .finally(() => setIsLoading(false));
-    }, 1000);
+    fetch("https://servicodados.ibge.gov.br/api/v3/noticias/")
+      .then((res) => res.json())
+      .then((items: { items: NewsItem[] }) => {
+        setNews(items.items);
+        setFilteredNews(items.items); // Inicializar com todas as notícias
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   useEffect(() => {
     if (triggerSearch) {
       setIsLoading(true);
-      setTimeout(() => {
+
+      const timeoutId = setTimeout(() => {
         if (searchTerm.trim() === "") {
           setFilteredNews(news);
         } else {
@@ -50,9 +49,12 @@ const News = ({ searchTerm, triggerSearch, setTriggerSearch }: NewsProps) => {
           );
           setFilteredNews(filtered);
         }
-        setIsLoading(false);
+
         setTriggerSearch(false);
+        setIsLoading(false);
       }, 1000);
+
+      return () => clearTimeout(timeoutId);
     }
   }, [triggerSearch, searchTerm, news, setTriggerSearch]);
 
