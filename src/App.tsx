@@ -1,14 +1,13 @@
 import { useState } from "react";
 import News from "./components/News/News";
 import NavBar from "./components/NavBar/NavBar";
-import Footer from "./components/Footer/Footer";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [triggerSearch, setTriggerSearch] = useState(false);
 
   const handleSearch = () => {
-    setTriggerSearch(true); // Dispara a busca
+    setTriggerSearch(true);
   };
 
   return (
@@ -19,7 +18,6 @@ function App() {
         triggerSearch={triggerSearch}
         setTriggerSearch={setTriggerSearch}
       />
-      <Footer />
     </>
   );
 }

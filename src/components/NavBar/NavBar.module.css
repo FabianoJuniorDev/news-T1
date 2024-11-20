@@ -3,4 +3,35 @@
   background-color: red;
   justify-content: space-around;
   align-items: center;
+  padding: 10px;
+  width: 100%;
+}
+
+.searchWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 250px;
+  border-radius: 25px;
+}
+
+.inputSearch {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.search {
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
+  color: #888;
+  cursor: pointer;
+}
+
+.search:hover {
+  color: #333;
 }
