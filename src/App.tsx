@@ -1,10 +1,25 @@
+import { useState } from "react";
 import News from "./components/News/News";
-import Input from "./components/Input/Input";
+import NavBar from "./components/NavBar/NavBar";
+import Footer from "./components/Footer/Footer";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [triggerSearch, setTriggerSearch] = useState(false);
+
+  const handleSearch = () => {
+    setTriggerSearch(true); // Dispara a busca
+  };
+
   return (
     <>
-      <News />
+      <NavBar setSearchTerm={setSearchTerm} onSearch={handleSearch} />
+      <News
+        searchTerm={searchTerm}
+        triggerSearch={triggerSearch}
+        setTriggerSearch={setTriggerSearch}
+      />
+      <Footer />
     </>
   );
 }
