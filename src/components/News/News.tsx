@@ -26,7 +26,7 @@ const News = ({ searchTerm, triggerSearch, setTriggerSearch }: NewsProps) => {
   useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
-      fetch("http://servicodados.ibge.gov.br/api/v3/noticias/")
+      fetch("https://servicodados.ibge.gov.br/api/v3/noticias/")
         .then((res) => res.json())
         .then((items: { items: NewsItem[] }) => {
           setNews(items.items);
